@@ -47,7 +47,7 @@ const FriendIcon:React.FC<Props> = ({user, friend}) => {
   const determinePicture = () =>{
     if (user.profile_pic === 'https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png') {
       return user.profile_pic
-    } else return `http://localhost:3001${user.profile_pic}`
+    } else return `https://moviematcher-api.herokuapp.com${user.profile_pic}`
   };
 
   return (

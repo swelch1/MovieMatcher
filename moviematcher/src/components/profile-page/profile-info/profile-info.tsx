@@ -131,7 +131,7 @@ const ProfileInfo= () => {
   return (
       <div className='profile-info'>
           <div className='profile-info-icons'>
-            <img src={`http://localhost:3001${profileInfo.profile_pic}`} alt="profile"/>
+            <img src={`https://moviematcher-api.herokuapp.com${profileInfo.profile_pic}`} alt="profile"/>
             {Number(params.id) === userID && <>
               <div>
                 <button className="update-photo-btn enlarge-on-hover" onClick={updatePicture}>{inputToggle ? 'Update' : 'Update Photo'}</button>
