@@ -4,7 +4,7 @@ import { IFavoriteMovie, IMovieWithRating } from '../../interfaces/favoriteMovie
 import { IActivity } from '../../interfaces/activityInterface';
 
 import axios from 'axios';
-const BASE_URL = 'http://localhost:3001'
+const BASE_URL = 'https://moviematcher-api.herokuapp.com'
 interface User {
   username:string,
   email:string,
