@@ -6,7 +6,8 @@ import { actorListPlaceholder } from '../actorListPlaceholder';
 import ActorDetailsInterface from '../../interfaces/ActorDetails';
 import { actorDetailsPlaceholder } from '../actorDetailsPlaceholder';
 import { IStreamProvider } from '../../interfaces/StreamProviders';
-const BASE_URL = 'https://moviematcher-api.herokuapp.com'
+require('dotenv').config()
+const BASE_URL = process.env.BASE_URL || 'https://moviematcher-api.herokuapp.com'
 
 const APIService = {
   fetchMovie: async (id: number) =>{

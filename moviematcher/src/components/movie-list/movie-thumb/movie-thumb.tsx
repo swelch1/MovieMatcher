@@ -84,18 +84,22 @@ const MovieThumb:React.FC<Props> = ({movie}) => {
           }}>
           More Details
         </Button>
-        <Button style={{backgroundColor:'transparent'}}
-          className='enlarge-on-hover'
-          onClick={handleAddToWatchList}>
-            {favoriteMovieIds.includes(movie.id) ? <FaTimes color='red' /> : <FaPlus color='green'/>}
-            <span style={{fontStyle:'italic', marginLeft:'5px'}}>{favoriteMovieIds.includes(movie.id) ? 'Remove Wantlist' :'Want to Watch' } </span>
-        </Button>
-        <Button style={{backgroundColor:'transparent'}}
-          className='enlarge-on-hover'
-          onClick={handleBlackList}>
-            { blackListIds.includes(movie.id) ? <FaMinus color='red'/> : <FaSkull color='red' /> }
-            <span style={{fontStyle:'italic', marginLeft:'5px'}}>{blackListIds.includes(movie.id) ? 'Remove Blacklist' : 'Blacklist It'}</span>
-        </Button>
+        { accessToken &&
+          <>
+            <Button style={{backgroundColor:'transparent'}}
+              className='enlarge-on-hover'
+              onClick={handleAddToWatchList}>
+                {favoriteMovieIds.includes(movie.id) ? <FaTimes color='red' /> : <FaPlus color='green'/>}
+                <span style={{fontStyle:'italic', marginLeft:'5px'}}>{favoriteMovieIds.includes(movie.id) ? 'Remove Wantlist' :'Want to Watch' } </span>
+            </Button>
+            <Button style={{backgroundColor:'transparent'}}
+              className='enlarge-on-hover'
+              onClick={handleBlackList}>
+                { blackListIds.includes(movie.id) ? <FaMinus color='red'/> : <FaSkull color='red' /> }
+                <span style={{fontStyle:'italic', marginLeft:'5px'}}>{blackListIds.includes(movie.id) ? 'Remove Blacklist' : 'Blacklist It'}</span>
+            </Button>
+          </>
+        }
       </div>
       <img className='movie-thumb-img' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt='movie poster' />
     </div>

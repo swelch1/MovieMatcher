@@ -2,9 +2,11 @@ import {IAccessTokenResponse, IPictureChange, IUser as UserInterface} from '../.
 import { UserPlaceholder } from '../UserPlaceholder'
 import { IFavoriteMovie, IMovieWithRating } from '../../interfaces/favoriteMovieInterface'
 import { IActivity } from '../../interfaces/activityInterface';
-
 import axios from 'axios';
-const BASE_URL = 'https://moviematcher-api.herokuapp.com'
+require('dotenv').config()
+
+const BASE_URL = process.env.BASE_URL || 'https://moviematcher-api.herokuapp.com'
+
 interface User {
   username:string,
   email:string,

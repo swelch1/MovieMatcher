@@ -10,6 +10,8 @@ import { selectUserId } from '../../../redux/features/user/userIdSlice';
 import { addFriendId, removeFriendId } from '../../../redux/features/user/friendsIdSlice';
 import { selectSocketRef } from '../../../redux/features/socket/socketRefSlice';
 import { selectUserName } from '../../../redux/features/user/yourUserName';
+require('dotenv').config();
+const BASE_URL = process.env.BASE_URL || 'https://moviematcher-api.herokuapp.com'
 
 
 const ProfileInfo= () => {
@@ -131,7 +133,7 @@ const ProfileInfo= () => {
   return (
       <div className='profile-info'>
           <div className='profile-info-icons'>
-            <img src={`https://moviematcher-api.herokuapp.com${profileInfo.profile_pic}`} alt="profile"/>
+            <img src={`${BASE_URL}${profileInfo.profile_pic}`} alt="profile"/>
             {Number(params.id) === userID && <>
               <div>
                 <button className="update-photo-btn enlarge-on-hover" onClick={updatePicture}>{inputToggle ? 'Update' : 'Update Photo'}</button>

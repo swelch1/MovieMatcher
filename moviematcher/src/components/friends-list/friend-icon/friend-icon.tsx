@@ -9,6 +9,8 @@ import {setFriendIds} from '../../../redux/features/user/friendsIdSlice';
 import { selectLoggedInUser } from '../../../redux/features/user/loggedInUsers';
 import { selectSocketRef } from '../../../redux/features/socket/socketRefSlice';
 import { selectUserName } from '../../../redux/features/user/yourUserName';
+require('dotenv').config();
+const BASE_URL = process.env.BASE_URL || 'https://moviematcher-api.herokuapp.com'
 
 type Props = {
     user: IUser,
@@ -47,7 +49,7 @@ const FriendIcon:React.FC<Props> = ({user, friend}) => {
   const determinePicture = () =>{
     if (user.profile_pic === 'https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png') {
       return user.profile_pic
-    } else return `https://moviematcher-api.herokuapp.com${user.profile_pic}`
+    } else return `${BASE_URL}${user.profile_pic}`
   };
 
   return (

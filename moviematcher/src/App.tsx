@@ -32,6 +32,8 @@ import {IFilterData} from '../interfaces/filterFormInterface';
 import { setUserStreaming } from './redux/features/user/userStreaming';
 import StreamingServiceList from './components/streaming-services/StreamingServiceList';
 import StreamingMovies from './components/streaming-services/StreamingMovies';
+import About from './components/about/About';
+import HowTo from './components/how-to/HowTo';
 
 
 function App() {
@@ -128,6 +130,8 @@ function App() {
           <Route path ='/movieMatch/:room' element = {<MovieMatch />} />
           <Route path ='/streaming' element = {<StreamingServiceList />} />
           <Route path ='/movies/:provider/:id' element = {<StreamingMovies />} />
+          <Route path ='/about' element = {<About />} />
+          <Route path ='/how-to' element = {<HowTo />} />
       </Routes>
       <div className="outlet">
         <Outlet />
