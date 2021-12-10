@@ -22,7 +22,7 @@ import { setActivities } from '../../../redux/features/user/activitiesSlice';
 import { addRating } from '../../../redux/features/user/ratingsSlice';
 import ButtonHolder from '../../movie-page/movie-details/ButtonHolder';
 import RateMovieModal from '../../movie-page/movie-details/RateMovieModal';
-
+import { selectActivities } from '../../../redux/features/user/activitiesSlice'
 type Props ={
   otherUserName: string,
   movieId:string
@@ -38,13 +38,14 @@ const RecentActivityModal:React.FC<Props> = ({otherUserName, movieId}) => {
   const accessToken = useAppSelector(selectAuth);
   const { onOpen, onClose } = useDisclosure();
   const dispatch = useAppDispatch();
-
+  let activitiesRaw = useAppSelector(selectActivities);
   useEffect(() => {
     let isCancelled = false;
 
     const getOtherUserInformation = async() => {
       try {
         const otherUser = await ServerApiService.getOtherUserByUserName(accessToken, otherUserName);
+        console.log('other user,', otherUser)
         if(!isCancelled) {
           setOtherUserInformation(otherUser);
         }
@@ -94,8 +95,9 @@ const RecentActivityModal:React.FC<Props> = ({otherUserName, movieId}) => {
 
   const handleAddToWatched = async() => {
     try{
-      const activities = await ServerApiService.getActivities(accessToken);
-      dispatch(setActivities(activities));
+      const activities = await ServerApiService.addWatchedMovie(accessToken, {movieID: currentMovie.id, friendID: otherUserInformation.id});
+      console.log(activities, 'these are de activitass');
+      dispatch(setActivities([activities, ...activitiesRaw]));
       handleClose();
     } catch (e) {
       console.error(e)

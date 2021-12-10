@@ -76,11 +76,8 @@ function App() {
     }
     const fetchFavoriteMovies = async() => {
       let favoriteMovies  = await ServerApiService.getWatchList(accessToken);
-      console.log(favoriteMovies, 'this is favorite movies')
-      if (favoriteMovies) {
         let ids = favoriteMovies.map((movie) => movie.movieid)
         dispatch(setFavoriteMovieIds(ids));
-      }
     }
     const fetchBlackListMovies = async() => {
       let blackListMovies = await ServerApiService.getBlackList(accessToken);
@@ -93,7 +90,6 @@ function App() {
       let ratings = ratingsFull.map(rating => {
         return {rating: rating.rating, movieid: rating.movieid}
       })
-      console.log(ratings);
       dispatch(setRatings(ratings))
     }
     const fetchActivities = async() => {
